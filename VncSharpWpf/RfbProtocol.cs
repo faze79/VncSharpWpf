@@ -839,13 +839,13 @@ namespace VncSharpWpf
 		public sealed class ZRLECompressedReader : BinaryReader
 		{
 			MemoryStream zlibMemoryStream;
-			ComponentAce.Compression.Libs.zlib.ZOutputStream zlibDecompressedStream;
+			zlib.ZOutputStream zlibDecompressedStream;
 			BinaryReader uncompressedReader;
 
 			public ZRLECompressedReader(Stream uncompressedStream) : base(uncompressedStream)
 			{
 				zlibMemoryStream = new MemoryStream();
-				zlibDecompressedStream = new ComponentAce.Compression.Libs.zlib.ZOutputStream(zlibMemoryStream);
+				zlibDecompressedStream = new zlib.ZOutputStream(zlibMemoryStream);
 				uncompressedReader = new BinaryReader(zlibMemoryStream);
 			}
 

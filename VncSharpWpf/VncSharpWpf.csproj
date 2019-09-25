@@ -44,7 +44,7 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>VncSharpWpf.pfx</AssemblyOriginatorKeyFile>
@@ -65,6 +65,10 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="zlib.net, Version=1.0.3.0, Culture=neutral, PublicKeyToken=47d7877cb3620160">
+      <HintPath>..\packages\zlib.net.1.0.4.0\lib\zlib.net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectEventArgs.cs" />
@@ -87,20 +91,6 @@
     <Compile Include="VncEventArgs.cs" />
     <Compile Include="VncProtocolException.cs" />
     <Compile Include="VncViewInputPolicy.cs" />
-    <Compile Include="zlib.NET\Adler32.cs" />
-    <Compile Include="zlib.NET\Deflate.cs" />
-    <Compile Include="zlib.NET\InfBlocks.cs" />
-    <Compile Include="zlib.NET\InfCodes.cs" />
-    <Compile Include="zlib.NET\Inflate.cs" />
-    <Compile Include="zlib.NET\InfTree.cs" />
-    <Compile Include="zlib.NET\StaticTree.cs" />
-    <Compile Include="zlib.NET\SupportClass.cs" />
-    <Compile Include="zlib.NET\Tree.cs" />
-    <Compile Include="zlib.NET\ZInputStream.cs" />
-    <Compile Include="zlib.NET\Zlib.cs" />
-    <Compile Include="zlib.NET\ZOutputStream.cs" />
-    <Compile Include="zlib.NET\ZStream.cs" />
-    <Compile Include="zlib.NET\ZStreamException.cs" />
     <Compile Include="Encodings\CopyRectRectangle.cs" />
     <Compile Include="Encodings\CoRreRectangle.cs" />
     <Compile Include="Encodings\CPixelReader.cs" />
@@ -140,6 +130,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -149,11 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\vnccursor.cur" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="zlib.NET\history.txt" />
-    <Resource Include="zlib.NET\license.txt" />
-    <Resource Include="zlib.NET\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

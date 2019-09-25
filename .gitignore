@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/packages
+/VncSharpWpf/bin/Debug
+/VncSharpWpf/obj/x86
+/VncSharpWpf_Example/obj/x86
+/VncSharpWpf.v12.suo
