@@ -42,6 +42,11 @@ namespace VncSharpWpf
         /// </summary>
         public EventHandler FailedToListen;
 
+        /// <summary>
+        /// Executing without debugger initially stream read byte zero
+        /// </summary>
+        public int SkipBytesLimit = 256;
+
 		// Encoding Constants
 		public const int RAW_ENCODING 					= 0;
 		public const int COPYRECT_ENCODING 				= 1;
@@ -417,8 +422,15 @@ namespace VncSharpWpf
 		/// <returns>Returns a Framebuffer object representing the geometry and properties of the remote host.</returns>
 		public Framebuffer ReadServerInit()
 		{
-			int w = (int) reader.ReadUInt16();
-			int h = (int) reader.ReadUInt16();
+            int w = 0;
+            int h = 0;
+            int retry = 0;
+            while (w <= 0 && h <= 0 && retry < SkipBytesLimit)
+            {
+                w = (int)reader.ReadUInt16();
+                h = (int)reader.ReadUInt16();
+                retry++;
+            }
 			Framebuffer buffer = Framebuffer.FromPixelFormat(reader.ReadBytes(16), w, h);
 			int length = (int) reader.ReadUInt32();
 
